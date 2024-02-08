@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+:root {
+  --ygo-primary: #d48f38;
+  --ygo-dark: #212529;
+  --ygo-light: #ffffff;
+}
+
+body {
+  background: var(--ygo-primary);
+}
