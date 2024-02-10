@@ -13,13 +13,32 @@ export default {
     return {
       apiUrl: "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0",
       cards: [],
+      archetypes: [],
     };
+  },
+  methods: {
+    getActiveFilter(value) {
+      console.log(value);
+      const filteredCards = this.cards.filter((card) =>
+        card.archetype === "All" || card.archetype === value ? true : false
+      );
+      console.log(filteredCards);
+    },
   },
   mounted() {
     axios
       .get(this.apiUrl)
       .then((response) => {
         this.cards = response.data.data;
+        this.cards.forEach((card) =>
+          !this.archetypes.includes(
+            card.archetype ? card.archetype : "Undefined"
+          )
+            ? this.archetypes.push(
+                card.archetype ? card.archetype : "Undefined"
+              )
+            : ""
+        );
       })
       .catch((error) => {
         console.log(error.message);
@@ -30,7 +49,10 @@ export default {
 <template>
   <main>
     <div class="container">
-      <AppFilter></AppFilter>
+      <AppFilter
+        :archetypes="archetypes.sort()"
+        @activeFilter="getActiveFilter"
+      ></AppFilter>
       <div class="row">
         <div class="col" v-for="card in cards">
           <AppCard :card="card"></AppCard>

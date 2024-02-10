@@ -1,16 +1,23 @@
 <script>
 export default {
   name: "AppFilter",
+  props: {
+    archetypes: Array,
+  },
+  methods: {
+    filteredCards(e) {
+      console.log(e.target.value);
+      this.$emit("activeFilter", e.target.value);
+    },
+  },
 };
 </script>
 <template>
-  <select name="cards" id="cardsFilter">
-    <option value="">--Please choose an option--</option>
-    <option value="Alien">Dog</option>
-    <option value="Infernoble Arms">Cat</option>
-    <option value="Noble Knight">Hamster</option>
-    <option value="Melodious">Parrot</option>
-    <option value="Archfiend">Spider</option>
+  <select name="cards" id="cardsFilter" @change="filteredCards">
+    <option value="All">All</option>
+    <option v-for="archetype in archetypes" :value="archetype">
+      {{ archetype }}
+    </option>
   </select>
 </template>
 <style scoped>
