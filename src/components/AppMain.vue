@@ -91,4 +91,31 @@ export default {
   width: calc(100% / 5);
   padding: 1rem;
 }
+
+@media screen and (max-width: 1400px) {
+  .col {
+    width: 25%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .container {
+    width: 100%;
+  }
+  .col {
+    width: calc(100% / 3);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .col {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .col {
+    width: 100%;
+  }
+}
 </style>
