@@ -6,7 +6,7 @@ export default {
   },
   methods: {
     filteredCards(e) {
-      console.log(e.target.value);
+      /* console.log(e.target.value); */
       this.$emit("activeFilter", e.target.value);
     },
   },
